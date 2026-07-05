@@ -12,10 +12,14 @@ jobs:
           docker save -o redis-7-alpine.tar redis:7-alpine
           docker save -o searxng-latest.tar searxng/searxng:latest
 
-      - name: 打包上传离线tar包
+      - name: 上传redis镜像包
         uses: actions/upload-artifact@v4
         with:
-          name: docker-offline-images
-          paths: |
-            redis-7-alpine.tar
-            searxng-latest.tar
+          name: redis-7-alpine
+          path: redis-7-alpine.tar
+
+      - name: 上传searxng镜像包
+        uses: actions/upload-artifact@v4
+        with:
+          name: searxng-latest
+          path: searxng-latest.tar
